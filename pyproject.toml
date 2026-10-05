@@ -1,0 +1,44 @@
+[project]
+name = "yanzu-face-compare"
+version = "1.0.0"
+description = "摄像头实时人脸相似度对比小工具（对比目标：吴彦祖）"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python>=4.8",
+    "pillow>=10.0",
+    "dlib-bin>=20.0.1; platform_system == 'Windows'",
+    "face-recognition-models>=0.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.5", "scipy>=1.10"]
+
+[project.scripts]
+yanzu-face-compare = "facecmp.app:main"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = [
+    "E501",    # 行宽交给 formatter
+    "RUF001",  # 中文全角标点不是错别字
+    "RUF002",
+    "RUF003",
+    "SIM105",  # contextlib.suppress 在热路径上反而更慢
+]
+
+[tool.ruff.lint.per-file-ignores]
+# 这些脚本要跟不稳定的外部服务打交道，兜底必须吞掉所有异常；
+# 并且需要在 import 前先改 sys.path 才能找到 facecmp 包
+"tools/*.py" = ["BLE001", "B904", "E402"]
+"run.py" = ["E402"]
+"facecmp/session.py" = ["BLE001"]
+"facecmp/app.py" = ["BLE001"]
+"facecmp/engine.py" = ["BLE001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["facecmp"]

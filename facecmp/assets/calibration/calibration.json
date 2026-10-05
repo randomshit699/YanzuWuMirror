@@ -1,0 +1,49 @@
+{
+  "version": 3,
+  "method": "top-K gallery retrieval; anchors from real impostor population",
+  "anchors": [
+    {
+      "label": "impostor_p50",
+      "cos": 0.9022816891372734,
+      "score": 40.0,
+      "note": "比一半陌生面孔更像"
+    },
+    {
+      "label": "impostor_p95",
+      "cos": 0.9219119645196903,
+      "score": 62.0,
+      "note": "比 95% 陌生面孔更像"
+    },
+    {
+      "label": "genuine_p05",
+      "cos": 0.9878277616411381,
+      "score": 88.0,
+      "note": "达到本人不同照片的典型水平"
+    }
+  ],
+  "stats": {
+    "genuine_n": 3,
+    "genuine_mean": 0.9934499258062935,
+    "genuine_min": 0.9868356150237576,
+    "genuine_max": 0.9967570811975617,
+    "impostor_n": 30,
+    "impostor_mean": 0.8995105997031632,
+    "impostor_p50": 0.9022816891372734,
+    "impostor_p95": 0.9219119645196903,
+    "impostor_max": 0.925564904142248,
+    "overlap_rate": 0.0,
+    "separation_margin": 0.061270710881509594
+  },
+  "reference_files": [
+    "daniel_wu_01_gage_skidmore.jpg",
+    "daniel_wu_02_sdcc2015.jpg",
+    "daniel_wu_04_sdcc2015_alt.jpg"
+  ],
+  "reference_rejected": [
+    {
+      "name": "daniel_wu_03_alive.jpg",
+      "reason": "姿态/画质不合格: 请正对摄像头、画面有点糊，靠近点"
+    }
+  ],
+  "top_k": 2
+}

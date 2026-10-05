@@ -1,0 +1,11 @@
+# 核心依赖
+numpy>=1.24
+opencv-python>=4.8
+pillow>=10.0
+
+# 人脸模型文件（68 点关键点 + 128 维 ResNet 描述子 + CNN/HMM 检测器）
+face-recognition-models>=0.3.0
+
+# Windows 上用预编译的 dlib，避免需要 CMake / Visual Studio 构建工具链
+# 非 Windows 请改装 dlib>=19.24 并自行编译
+dlib-bin>=20.0.1; platform_system == "Windows"
